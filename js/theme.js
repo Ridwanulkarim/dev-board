@@ -1,8 +1,7 @@
-const button = document.getElementById("theme-controller");
-const body = document.body;
+const themeButton = document.getElementById("theme-controller");
 
-function randomLightColor() {
-	const letters = "ABCDEF"; 
+function getRandomLightColor() {
+	const letters = "ABCDEF";
 	let color = "#";
 	for (let i = 0; i < 6; i++) {
 		color += letters[Math.floor(Math.random() * letters.length)];
@@ -10,6 +9,8 @@ function randomLightColor() {
 	return color;
 }
 
-button.addEventListener("click", function () {
-	body.style.backgroundColor = randomLightColor();
-});
+if (themeButton) {
+	themeButton.addEventListener("click", function () {
+		document.body.style.backgroundColor = getRandomLightColor();
+	});
+}

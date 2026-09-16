@@ -11,36 +11,50 @@
 			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 			rel="stylesheet"
 		/>
-		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							poppins: ["Poppins", "sans-serif"],
+						},
+						colors: {
+							primary: "#3752FD",
+						},
+					},
+				},
+			};
+		</script>
 	</head>
-	<body class="px-3 sm:px-6 md:px-10 lg:px-14 py-4 sm:py-6 font-[Poppins] bg-[#F4F7FF] min-h-screen">
+	<body class="px-3 sm:px-6 md:px-10 lg:px-14 py-4 sm:py-6 font-[Poppins] bg-[#F4F7FF] min-h-screen transition-colors duration-300">
 		<div class="max-w-[1536px] mx-auto">
-			<!-- navbar -->
-			<nav class="bg-white px-4 sm:px-6 py-4 rounded-2xl flex items-center justify-between shadow-sm">
-				<!-- nav left side -->
-				<div class="gap-2 sm:gap-3 flex items-center">
+			<!-- Navbar -->
+			<nav class="bg-white px-4 sm:px-6 py-4 rounded-2xl flex items-center justify-between shadow-xs">
+				<!-- Nav left side -->
+				<div class="gap-2 sm:gap-3 flex items-center cursor-pointer select-none">
 					<img src="assets/logo.png" alt="DevBoard Logo" class="w-8 h-8 sm:w-10 sm:h-10" />
 					<h1 class="text-2xl sm:text-3xl font-light text-gray-800">
-						Dev<span class="font-bold">Board</span>
+						Dev<span class="font-bold text-gray-900">Board</span>
 					</h1>
 				</div>
-				<!-- nav right side -->
+				<!-- Nav right side -->
 				<div class="flex gap-3 sm:gap-4 items-center">
 					<div class="flex items-center gap-2 sm:gap-3 bg-[#F4F7FF] rounded-3xl px-3 sm:px-4 py-2 sm:py-2.5">
 						<img src="assets/checkbox.png" class="w-5 h-5 sm:w-6 sm:h-6" alt="Completed tasks icon" />
 						<span id="complete-task-num" class="font-bold text-xl sm:text-2xl text-gray-800">23</span>
 					</div>
-					<div id="theme-controller" class="bg-[#F4F7FF] rounded-full p-2.5 sm:p-3 cursor-pointer hover:bg-gray-200 transition-colors active:scale-95" title="Change Background Color">
+					<div id="theme-controller" class="bg-[#F4F7FF] rounded-full p-2.5 sm:p-3 cursor-pointer hover:bg-gray-200 transition-colors active:scale-95 shadow-xs" title="Change Background Color">
 						<img src="assets/theme-btn.png" class="w-6 h-6 sm:w-8 sm:h-8" alt="Theme button" />
 					</div>
 				</div>
 			</nav>
 
-			<!-- main layout -->
+			<!-- Main Layout -->
 			<section class="my-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
-				<!-- left side (Dashboard & Tasks) -->
-				<div class="rounded-2xl bg-white lg:col-span-3 shadow-sm overflow-hidden">
-					<!-- top summary cards -->
+				<!-- Left side (Dashboard & Tasks) -->
+				<div class="rounded-2xl bg-white lg:col-span-3 shadow-xs overflow-hidden">
+					<!-- Top summary cards -->
 					<div class="p-4 sm:p-5 border-b-[2px] border-dashed border-gray-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 						<!-- Task Assigned -->
 						<div class="p-4 sm:p-5 rounded-xl flex items-center gap-4 bg-[#F4F7FF]">
@@ -56,11 +70,11 @@
 						<!-- Discover Banner -->
 						<div
 							id="blog-btn"
-							class="p-4 sm:p-5 rounded-xl flex items-center gap-4 bg-gradient-to-r from-[#3752FD] via-[#6C7FFA] to-[#9BA8F8] cursor-pointer sm:col-span-2 hover:opacity-95 transition-opacity"
+							class="p-4 sm:p-5 rounded-xl flex items-center gap-4 bg-gradient-to-r from-[#3752FD] via-[#6C7FFA] to-[#9BA8F8] cursor-pointer sm:col-span-2 hover:opacity-95 transition-all active:scale-[0.99] shadow-xs"
 							title="Go to Blog"
 						>
 							<img src="assets/board.png" class="w-16 sm:w-20 shrink-0" alt="Discover" />
-							<h1 class="text-white text-lg sm:text-xl md:text-2xl font-semibold leading-snug">
+							<h1 class="text-white text-lg sm:text-xl md:text-2xl font-medium leading-snug">
 								Discover Something <br />
 								New Today!
 							</h1>
@@ -69,11 +83,11 @@
 						<!-- Current Date -->
 						<div class="p-4 sm:p-5 rounded-xl flex items-center gap-4 bg-[#F4F7FF]">
 							<div class="bg-white rounded-full p-3 sm:p-4 flex items-center justify-center shrink-0 shadow-xs">
-								<img src="assets/calender.png" class="w-6 h-6" alt="calendar" />
+								<img src="assets/calendar.png" class="w-6 h-6" alt="calendar" />
 							</div>
 							<div>
 								<p id="day" class="text-sm sm:text-base text-gray-600 font-medium"></p>
-								<p id="full-date" class="font-bold text-base sm:text-xl text-gray-900"></p>
+								<p id="full-date" class="font-bold text-base sm:text-lg text-gray-900"></p>
 							</div>
 						</div>
 					</div>
@@ -81,15 +95,14 @@
 					<!-- Tasks Grid -->
 					<div class="p-4 sm:p-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
 						<!-- Card 1 -->
-						<div class="p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
+						<div class="task-card p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
 							<div class="pb-4 border-b border-dashed border-gray-300">
-								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">ShopEase</span>
+								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">Shop Ease</span>
 								<h2 id="card-title-1" class="mt-3 font-semibold text-lg sm:text-xl text-gray-900">
 									Fix Mobile Button Issue
 								</h2>
 								<p class="bg-white p-3 rounded-lg mt-3 text-xs sm:text-sm text-gray-500 line-clamp-3">
-									Debug using Chrome DevTools, check for overlapping elements, and
-									ensure onClick works properly and ensure onClick works properly
+									A card component has a figure, a body part, and inside body there are title and actions parts
 								</p>
 							</div>
 							<div class="mt-4 flex items-center justify-between gap-2">
@@ -106,19 +119,20 @@
 						</div>
 
 						<!-- Card 2 -->
-						<div class="p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
+						<div class="task-card p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
 							<div class="pb-4 border-b border-dashed border-gray-300">
-								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">Cloud Sync</span>
-								<h2 id="card-title-2" class="mt-3 font-semibold text-lg sm:text-xl text-gray-900">Add Dark Mode</h2>
+								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">Soft Pay</span>
+								<h2 id="card-title-2" class="mt-3 font-semibold text-lg sm:text-xl text-gray-900">
+									Add Pay Success Modal
+								</h2>
 								<p class="bg-white p-3 rounded-lg mt-3 text-xs sm:text-sm text-gray-500 line-clamp-3">
-									Store the user's preference in localStorage, update CSS
-									variables dynamically, and apply a smooth transition effect.
+									A card component has a figure, a body part, and inside body there are title and actions parts
 								</p>
 							</div>
 							<div class="mt-4 flex items-center justify-between gap-2">
 								<div>
 									<p class="text-xs text-gray-500">Deadline</p>
-									<p class="text-xs sm:text-sm font-semibold text-gray-800">21 March 2025</p>
+									<p class="text-xs sm:text-sm font-semibold text-gray-800">25 March 2025</p>
 								</div>
 								<div>
 									<button class="task-btn bg-[#3752FD] hover:bg-blue-700 active:scale-95 transition-all px-4 py-2 rounded-lg text-white text-xs sm:text-sm font-medium cursor-pointer">
@@ -129,21 +143,20 @@
 						</div>
 
 						<!-- Card 3 -->
-						<div class="p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
+						<div class="task-card p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
 							<div class="pb-4 border-b border-dashed border-gray-300">
-								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">SwiftPay</span>
+								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">Meta</span>
 								<h2 id="card-title-3" class="mt-3 font-semibold text-lg sm:text-xl text-gray-900">
-									Optimize Home page
+									Add new reaction 🤲
 								</h2>
 								<p class="bg-white p-3 rounded-lg mt-3 text-xs sm:text-sm text-gray-500 line-clamp-3">
-									Debug using Chrome DevTools, check for overlapping elements, and
-									ensure onClick works properly and ensure onClick works properly
+									A card component has a figure, a body part, and inside body there are title and actions parts
 								</p>
 							</div>
 							<div class="mt-4 flex items-center justify-between gap-2">
 								<div>
 									<p class="text-xs text-gray-500">Deadline</p>
-									<p class="text-xs sm:text-sm font-semibold text-gray-800">21 March 2025</p>
+									<p class="text-xs sm:text-sm font-semibold text-gray-800">31 March 2025</p>
 								</div>
 								<div>
 									<button class="task-btn bg-[#3752FD] hover:bg-blue-700 active:scale-95 transition-all px-4 py-2 rounded-lg text-white text-xs sm:text-sm font-medium cursor-pointer">
@@ -154,13 +167,14 @@
 						</div>
 
 						<!-- Card 4 -->
-						<div class="p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
+						<div class="task-card p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
 							<div class="pb-4 border-b border-dashed border-gray-300">
-								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">Meta</span>
-								<h2 id="card-title-4" class="mt-3 font-semibold text-lg sm:text-xl text-gray-900">Add new emoji 🤲</h2>
+								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">Programming Hero</span>
+								<h2 id="card-title-4" class="mt-3 font-semibold text-lg sm:text-xl text-gray-900">
+									Fix Video Loading Issue
+								</h2>
 								<p class="bg-white p-3 rounded-lg mt-3 text-xs sm:text-sm text-gray-500 line-clamp-3">
-									Debug using Chrome DevTools, check for overlapping elements, and
-									ensure onClick works properly
+									A card component has a figure, a body part, and inside body there are title and actions parts
 								</p>
 							</div>
 							<div class="mt-4 flex items-center justify-between gap-2">
@@ -177,21 +191,20 @@
 						</div>
 
 						<!-- Card 5 -->
-						<div class="p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
+						<div class="task-card p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
 							<div class="pb-4 border-b border-dashed border-gray-300">
 								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">Google LLC</span>
 								<h2 id="card-title-5" class="mt-3 font-semibold text-lg sm:text-xl text-gray-900">
-									Integrate OpenAI API
+									Integrate AI search
 								</h2>
 								<p class="bg-white p-3 rounded-lg mt-3 text-xs sm:text-sm text-gray-500 line-clamp-3">
-									Debug using Chrome DevTools, check for overlapping elements, and
-									ensure onClick works properly
+									A card component has a figure, a body part, and inside body there are title and actions parts
 								</p>
 							</div>
 							<div class="mt-4 flex items-center justify-between gap-2">
 								<div>
 									<p class="text-xs text-gray-500">Deadline</p>
-									<p class="text-xs sm:text-sm font-semibold text-gray-800">21 March 2025</p>
+									<p class="text-xs sm:text-sm font-semibold text-gray-800">01 April 2025</p>
 								</div>
 								<div>
 									<button class="task-btn bg-[#3752FD] hover:bg-blue-700 active:scale-95 transition-all px-4 py-2 rounded-lg text-white text-xs sm:text-sm font-medium cursor-pointer">
@@ -202,21 +215,20 @@
 						</div>
 
 						<!-- Card 6 -->
-						<div class="p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
+						<div class="task-card p-5 bg-[#F4F7FF] rounded-xl flex flex-col justify-between">
 							<div class="pb-4 border-b border-dashed border-gray-300">
-								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">Glassdoor</span>
+								<span class="inline-block bg-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg text-gray-700">Polygon Tech</span>
 								<h2 id="card-title-6" class="mt-3 font-semibold text-lg sm:text-xl text-gray-900">
-									Improve Job searching
+									Review Ami Probashi Site
 								</h2>
 								<p class="bg-white p-3 rounded-lg mt-3 text-xs sm:text-sm text-gray-500 line-clamp-3">
-									Debug using Chrome DevTools, check for overlapping elements, and
-									ensure onClick works properly
+									A card component has a figure, a body part, and inside body there are title and actions parts
 								</p>
 							</div>
 							<div class="mt-4 flex items-center justify-between gap-2">
 								<div>
 									<p class="text-xs text-gray-500">Deadline</p>
-									<p class="text-xs sm:text-sm font-semibold text-gray-800">21 March 2025</p>
+									<p class="text-xs sm:text-sm font-semibold text-gray-800">5 May 2025</p>
 								</div>
 								<div>
 									<button class="task-btn bg-[#3752FD] hover:bg-blue-700 active:scale-95 transition-all px-4 py-2 rounded-lg text-white text-xs sm:text-sm font-medium cursor-pointer">
@@ -228,8 +240,8 @@
 					</div>
 				</div>
 
-				<!-- right side (Activity Log) -->
-				<div class="flex flex-col items-center p-5 bg-white lg:col-span-1 rounded-2xl shadow-sm h-fit">
+				<!-- Right side (Activity Log) -->
+				<div class="flex flex-col items-center p-5 bg-white lg:col-span-1 rounded-2xl shadow-xs h-fit">
 					<div class="flex items-center gap-2">
 						<img src="assets/activity.png" class="w-6 h-6" alt="activity" />
 						<p class="text-lg font-medium text-gray-800">Activity Log</p>
@@ -247,17 +259,19 @@
 			</section>
 		</div>
 
+		<!-- Scripts -->
 		<script src="js/theme.js"></script>
 		<script src="js/time.js"></script>
 		<script src="js/script.js"></script>
 		<script src="js/tasks.js"></script>
 		<script>
-			document
-				.getElementById("blog-btn")
-				.addEventListener("click", function (e) {
+			const blogBtn = document.getElementById("blog-btn");
+			if (blogBtn) {
+				blogBtn.addEventListener("click", function (e) {
 					e.preventDefault();
 					window.location.href = "blog.html";
 				});
+			}
 		</script>
 	</body>
 </html>

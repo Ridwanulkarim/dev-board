@@ -7,6 +7,12 @@ for (let i = 0; i < buttons.length; i++) {
 	});
 }
 
-document.getElementById("clr-history-btn").addEventListener("click", function () {
-	document.getElementById("task-complete-container").innerHTML = "";
-});
+const clearHistoryBtn = document.getElementById("clr-history-btn");
+if (clearHistoryBtn) {
+	clearHistoryBtn.addEventListener("click", function () {
+		const container = document.getElementById("task-complete-container");
+		if (container) {
+			container.innerHTML = "";
+		}
+	});
+}

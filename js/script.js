@@ -1,71 +1,85 @@
 function completeTask(button, e, card_title) {
-	e.preventDefault();
+	if (e && e.preventDefault) {
+		e.preventDefault();
+	}
 
-	const TaskAssignNum = parseInt(
-		document.getElementById("task-assign-num").innerText
-	);
-	const completeTaskNum = parseInt(
-		document.getElementById("complete-task-num").innerText
-	);
-	const taskTitle = document.getElementById(card_title).innerText;
+	if (!button || button.disabled) {
+		return;
+	}
 
-	const currentTaskAssNum = TaskAssignNum - 1;
-	document.getElementById("task-assign-num").innerText =
-		currentTaskAssNum < 10 ? "0" + currentTaskAssNum : currentTaskAssNum;
+	const taskAssignElem = document.getElementById("task-assign-num");
+	const completeTaskElem = document.getElementById("complete-task-num");
 
+	const taskAssignNum = parseInt(taskAssignElem.innerText, 10);
+	const completeTaskNum = parseInt(completeTaskElem.innerText, 10);
+
+	let taskTitle = "";
+	if (typeof card_title === "string") {
+		const elem = document.getElementById(card_title);
+		taskTitle = elem ? elem.innerText.trim() : card_title;
+	} else if (card_title && card_title.innerText) {
+		taskTitle = card_title.innerText.trim();
+	} else {
+		const card = button.closest(".task-card") || button.closest(".p-5");
+		const h2 = card ? card.querySelector("h2") : null;
+		taskTitle = h2 ? h2.innerText.trim() : "Task";
+	}
+
+	// Decrement assigned task count
+	const currentTaskAssNum = taskAssignNum - 1;
+	taskAssignElem.innerText =
+		currentTaskAssNum < 10 && currentTaskAssNum >= 0
+			? "0" + currentTaskAssNum
+			: currentTaskAssNum;
+
+	// Increment completed task count
 	const currentCompleteTaskNum = completeTaskNum + 1;
-	document.getElementById("complete-task-num").innerText = currentCompleteTaskNum;
+	completeTaskElem.innerText = currentCompleteTaskNum;
 
+	// Append entry to Activity Log
 	const container = document.getElementById("task-complete-container");
-	const div = document.createElement("div");
-	div.className = "w-full";
-	div.innerHTML = `
-        <div class="p-1 w-full">
-            <p class="bg-[#F4f7FF] p-3 rounded-xl text-xs sm:text-sm text-gray-700 leading-relaxed">
-              You have completed the task <span class="font-semibold text-gray-900">${taskTitle}</span> at <span class="font-medium text-blue-600">${currentTime()}</span>
-            </p>
-        </div>
-    `;
+	if (container) {
+		const div = document.createElement("div");
+		div.className = "w-full";
+		div.innerHTML = `
+			<div class="p-1 w-full">
+				<p class="bg-[#F4F7FF] p-3 rounded-xl text-xs sm:text-sm text-gray-700 leading-relaxed shadow-xs">
+					You have Complete The Task <span class="font-semibold text-gray-900">${taskTitle}</span> at <span class="font-medium text-blue-600">${currentTime()}</span>
+				</p>
+			</div>
+		`;
+		container.appendChild(div);
+	}
 
-	container.appendChild(div);
-
-	button.style.backgroundColor = "gray";
-	button.style.cursor = "not-allowed";
+	// Disable button and update styles
 	button.disabled = true;
+	button.classList.remove("bg-[#3752FD]", "hover:bg-blue-700", "active:scale-95", "cursor-pointer");
+	button.classList.add("bg-gray-300", "text-gray-400", "cursor-not-allowed");
+	button.style.backgroundColor = "#d1d5db";
+	button.style.color = "#9ca3af";
+	button.style.cursor = "not-allowed";
 
+	// Show update alert
 	alert("Board Updated Successfully");
 
+	// Show completion alert when all tasks are done
 	if (currentTaskAssNum === 0) {
-		alert("Congrats!!! You have completed all the current tasks!");
+		alert("Congrats!!! You have completed all the current task");
 	}
 }
 
 function currentTime() {
-	let now = new Date();
-
+	const now = new Date();
 	let hours = now.getHours();
 	let minutes = now.getMinutes();
 	let seconds = now.getSeconds();
-	let ampm;
+	const ampm = hours >= 12 ? "PM" : "AM";
 
-	if (hours >= 12) {
-		ampm = "PM";
-	} else {
-		ampm = "AM";
-	}
+	hours = hours % 12;
+	hours = hours ? hours : 12; // the hour '0' should be '12'
 
-	if (hours > 12) {
-		hours = hours - 12;
-	} else if (hours === 0) {
-		hours = 12;
-	}
+	const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+	const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
 
-	if (minutes < 10) {
-		minutes = "0" + minutes;
-	}
-	if (seconds < 10) {
-		seconds = "0" + seconds;
-	}
-
-	return hours + ":" + minutes + ":" + seconds + " " + ampm;
+	return `${hours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
 }
