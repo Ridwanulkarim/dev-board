@@ -2,7 +2,7 @@
 
 A modern, responsive task management board built with **HTML5**, **Tailwind CSS**, and **Vanilla JavaScript DOM Manipulation**.
 
-![DevBoard Preview](preview.jpg)
+![DevBoard Preview](preview.jpeg)
 
 ---
 
@@ -63,7 +63,6 @@ Dev-Board/
 ├── blog.html           # Questions and answers regarding DOM manipulation
 ├── index.html          # Main DevBoard application
 ├── preview.jpeg        # Design reference preview
-├── preview.jpg         # Asset preview alias
 ├── README.md           # Project documentation
 └── tailwind.config.js  # Tailwind configuration
 ```
