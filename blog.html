@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Board - Blogs</title>
+    <link rel="icon" href="assets/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="px-3 sm:px-6 md:px-10 lg:px-14 py-4 sm:py-6 font-[Poppins] bg-[#F4F7FF] min-h-screen">
+    <div class="max-w-5xl mx-auto">
+      <!-- navbar -->
+      <nav class="bg-white px-4 sm:px-6 py-4 rounded-2xl flex items-center justify-between shadow-sm">
+        <!-- nav left side -->
+        <div class="gap-2 sm:gap-3 flex items-center">
+          <img src="assets/logo.png" alt="DevBoard Logo" class="w-8 h-8 sm:w-10 sm:h-10" />
+          <h1 class="text-2xl sm:text-3xl font-light text-gray-800">
+            Dev<span class="font-bold">Board</span>
+          </h1>
+        </div>
+        <!-- nav right side -->
+        <div>
+          <button
+            id="blog-back-btn"
+            class="rounded-xl cursor-pointer px-4 sm:px-5 py-2.5 bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all text-white text-sm sm:text-base font-medium"
+          >
+            Back to Desk
+          </button>
+        </div>
+      </nav>
+
+      <div class="my-6">
+        <h1 class="text-2xl sm:text-3xl font-bold text-center text-gray-800">Blogs</h1>
+      </div>
+
+      <!-- questions section -->
+      <section class="flex flex-col gap-5">
+        <!-- Question 1 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div class="border-b border-dashed border-gray-200">
+            <h2 class="p-4 sm:p-5 text-base sm:text-lg font-bold text-gray-900">
+              Question-1: What are the different ways to select an element in the DOM?
+            </h2>
+          </div>
+          <div>
+            <p class="p-4 sm:p-5 text-sm sm:text-base text-gray-600 leading-relaxed">
+              We can select elements using <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">getElementById()</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">getElementsByClassName()</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">getElementsByTagName()</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">querySelector()</code>, and <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">querySelectorAll()</code>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div class="border-b border-dashed border-gray-200">
+            <h2 class="p-4 sm:p-5 text-base sm:text-lg font-bold text-gray-900">
+              Question-2: What is the difference between innerHTML, innerText, and textContent ?
+            </h2>
+          </div>
+          <div>
+            <p class="p-4 sm:p-5 text-sm sm:text-base text-gray-600 leading-relaxed">
+              <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">innerHTML</code> returns and parses HTML tags within an element, <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">innerText</code> returns only the human-readable text respecting CSS styling and visibility, and <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">textContent</code> retrieves all text content including hidden elements and scripts as raw text.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div class="border-b border-dashed border-gray-200">
+            <h2 class="p-4 sm:p-5 text-base sm:text-lg font-bold text-gray-900">
+              Question-3: What is event delegation in the DOM?
+            </h2>
+          </div>
+          <div>
+            <p class="p-4 sm:p-5 text-sm sm:text-base text-gray-600 leading-relaxed">
+              Event delegation is a pattern where you attach a single event listener to a common parent element rather than attaching listeners to multiple individual child elements. It leverages the event bubbling mechanism to handle events on current and dynamically added children efficiently.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div class="border-b border-dashed border-gray-200">
+            <h2 class="p-4 sm:p-5 text-base sm:text-lg font-bold text-gray-900">
+              Question-4: What is event bubbling in the DOM?
+            </h2>
+          </div>
+          <div>
+            <p class="p-4 sm:p-5 text-sm sm:text-base text-gray-600 leading-relaxed">
+              Event bubbling is a propagation mechanism in the HTML DOM where an event fired on a nested child element "bubbles up" through its ancestors in the DOM tree until it reaches the document root, unless stopped using <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">event.stopPropagation()</code>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div class="border-b border-dashed border-gray-200">
+            <h2 class="p-4 sm:p-5 text-base sm:text-lg font-bold text-gray-900">
+              Question-5: How do you create, add, and remove elements using JavaScript?
+            </h2>
+          </div>
+          <div>
+            <p class="p-4 sm:p-5 text-sm sm:text-base text-gray-600 leading-relaxed">
+              We can create elements with <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">document.createElement(tagName)</code>, insert them into the DOM using <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">parent.appendChild(node)</code> or <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">parent.append()</code>, and remove them using <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">node.remove()</code> or <code class="bg-gray-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs sm:text-sm">parent.removeChild(node)</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      document
+        .getElementById("blog-back-btn")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          window.location.href = "index.html";
+        });
+    </script>
+  </body>
+</html>
